@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ContosoUniversity.Models.Student>
+﻿ @model IEnumerable<ContosoUniversity.Models.Student>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,32 +13,43 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.LastName)
+                <!-- add a heading that displays Last Name for this column in the table view -->
+                @Html.DisplayNameFor(model => model.LastName) 
             </th>
             <th>
+                <!-- add a heading that displays First/Middle Name for this column in the table view -->
                 @Html.DisplayNameFor(model => model.FirstMidName)
             </th>
             <th>
+                <!-- add a heading that displays Enrollment Date for this column in the table view -->
                 @Html.DisplayNameFor(model => model.EnrollmentDate)
             </th>
             <th></th>
         </tr>
     </thead>
+
     <tbody>
+        <!-- iterate through the contents of the Student collection, displaying the following object attributes -->
 @foreach (var item in Model) {
         <tr>
             <td>
+                <!-- fill in this table row with a student's Last Name -->
                 @Html.DisplayFor(modelItem => item.LastName)
             </td>
             <td>
+                <!-- fill in this table row with a student's First & Middle Names -->
                 @Html.DisplayFor(modelItem => item.FirstMidName)
             </td>
             <td>
+                <!-- fill in this table row with a student's Enrollment Date -->
                 @Html.DisplayFor(modelItem => item.EnrollmentDate)
             </td>
             <td>
+                <!-- display a hyperlink that allows the current view's data to be edited -->
                 <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <!-- display a hyperlink that shows additional information about the given objects -->
                 <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <!-- display a hyperlink for deleting Student objects -->
                 <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
             </td>
         </tr>
