@@ -1,4 +1,4 @@
-﻿ @model IEnumerable<ContosoUniversity.Models.Student>
+﻿ @model PaginatedList<ContosoUniversity.Models.Student>
 
 @{
     ViewData["Title"] = "Index";
@@ -7,8 +7,21 @@
 <h1>Index</h1>
 
 <p>
+    <!-- display a link that allows a Student object to be created (calls the Create() method from StudentsController) -->
     <a asp-action="Create">Create New</a>
 </p>
+
+<!-- a simple form containing a search box and submit button. Enables the user to find a specific Student based on text input -->
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name: <input type="text" name="SearchString" value="@ViewData["currentFilter"]" /> <!-- a label that is displayed just before the search field -->
+            <input type="submit" value="Search" class="btn btn-default" /> | <!-- a submit button -->
+            <a asp-action="Index">Back to Full List</a> <!-- displays a link that navigates to the previous list view -->
+        </p>
+    </div>
+</form>
+
 <table class="table">
     <thead>
         <tr>
